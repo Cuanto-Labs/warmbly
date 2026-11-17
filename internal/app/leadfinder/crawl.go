@@ -734,7 +734,7 @@ func (c *Crawler) robots(ctx context.Context, site *url.URL) *robotsRules {
 		return &robotsRules{}
 	}
 	body, _ := io.ReadAll(io.LimitReader(resp.Body, 256<<10))
-	return parseRobots(string(body), "warmblybot")
+	return parseRobots(string(body), "*")
 }
 
 func parseRobots(src, agent string) *robotsRules {

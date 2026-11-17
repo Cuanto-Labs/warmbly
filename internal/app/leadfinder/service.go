@@ -18,6 +18,7 @@ import (
 	"github.com/warmbly/warmbly/internal/pkg/emailverify"
 	"github.com/warmbly/warmbly/internal/pkg/generation"
 	"github.com/warmbly/warmbly/internal/pkg/webread"
+	"github.com/warmbly/warmbly/internal/pkg/webua"
 	"github.com/warmbly/warmbly/internal/repository"
 )
 
@@ -28,8 +29,8 @@ const (
 	PointsCap = 5000
 	// searchTimeout bounds one provider page.
 	searchTimeout = 55 * time.Second
-	// defaultUserAgent identifies the finder to providers and websites.
-	defaultUserAgent = "WarmblyBot/1.0 (+https://warmbly.com/bot)"
+	// defaultUserAgent is what the finder sends to providers and websites.
+	defaultUserAgent = webua.Browser
 )
 
 // Config is the instance-level setup: endpoints, the operator's own provider

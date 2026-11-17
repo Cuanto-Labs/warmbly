@@ -18,6 +18,7 @@ import (
 	"github.com/warmbly/warmbly/internal/pkg/generation"
 	"github.com/warmbly/warmbly/internal/pkg/safehttp"
 	"github.com/warmbly/warmbly/internal/pkg/webread"
+	"github.com/warmbly/warmbly/internal/pkg/webua"
 )
 
 const (
@@ -113,7 +114,7 @@ func (d Deps) fetchURL(ctx context.Context, _ Invocation, args json.RawMessage) 
 	if err != nil {
 		return "", err
 	}
-	req.Header.Set("User-Agent", "WarmblyBot/1.0 (+https://warmbly.com)")
+	req.Header.Set("User-Agent", webua.Browser)
 	req.Header.Set("Accept", "text/html,text/plain;q=0.9,*/*;q=0.5")
 
 	resp, err := client.Do(req)

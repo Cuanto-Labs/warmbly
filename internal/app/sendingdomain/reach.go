@@ -17,6 +17,7 @@ import (
 
 	"github.com/warmbly/warmbly/internal/models"
 	"github.com/warmbly/warmbly/internal/pkg/safehttp"
+	"github.com/warmbly/warmbly/internal/pkg/webua"
 )
 
 // TrackingServiceHeader marks the tracking service's own answers, telling a visit that reached it from one a proxy answered.
@@ -96,7 +97,7 @@ func (p *httpReach) fetch(ctx context.Context, raw, domain, target string) hit {
 		out.hint = models.RedirectHintNoListener
 		return out
 	}
-	req.Header.Set("User-Agent", "Warmbly-RedirectCheck/1.0")
+	req.Header.Set("User-Agent", webua.Browser)
 	res, err := client.Do(req)
 	if err != nil {
 		switch {
